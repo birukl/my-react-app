@@ -59,6 +59,8 @@ export default function App() {
         chat={selectedChat} 
         onSendMessage={handleSendMessage}
       />
+
+      <div> love burra</div>
     </div>
   );
 }
