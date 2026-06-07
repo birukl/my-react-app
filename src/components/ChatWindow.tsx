@@ -201,6 +201,7 @@ export default function ChatWindow({ chat, onSendMessage }: ChatWindowProps) {
           >
             Send →
           </button>
+          <p>burra</p>
         </div>
         {chat.id === 1 && (
           <div className="mt-2 text-center">
