@@ -1,0 +1,51 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: red;
+}
+.container {
+    border-radius: 10px;
+    background: linear-gradient(to right, blue, green);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: ;
+}
+.output {
+    margin: 10px 5px;
+    padding: 20px 10px;
+    background-color: rgba(0, 0, 0, 0.241);
+    border-radius: 20px;
+}
+.waitingautput, .mainaoutput {
+  text-align: end;
+  font-size: 25px;
+  color: white;
+  
+}
+
+.buttongrids {
+    gap: 5px;
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    width: 100%;
+}
+
+button {
+    border: none;
+    background:linear-gradient(to bottom, rgb(142, 5, 255), rgb(0, 15, 181));
+    color: white;
+    font-weight: bolder;
+    border: none;
+    transform: translateY(-2px);
+}
+button:active {
+    transform: translateY(2px);
+}

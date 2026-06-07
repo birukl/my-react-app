@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text" placeholder="enter text">
+    <input type="date" id="date">
+    <input type="text" id="description"> 
+    <button onclick="save()">save it</button> 
+    <input type="text" name="" id="question" placeholder="add the question">
+    <input type="text" id="answer" placeholder="add the answer"><button onclick="add()">add</button>
+   <button onclick="pripare()">assk</button>
+   <div id="questions"></div>
+   <input id="answerd"> <button onclick="answer()">ansewr</button>
+    <ul id="ul"> 
+
+    </ul>
+    <div id="safty"></div>
+    <script>
+        const answerd = document.getElementById("answerd")
+        const questions =document.getElementById("questions");
+        const question = document.getElementById("question");
+        const answer = document.getElementById("answer");
+        const quizes = [];
+
+
+        function add() {
+            if(!question || !answer) return;
+            quizes.push({
+                questiont: question.value,
+                answer: answer.value
+            });
+            question.value = "";
+            answer.value = "";
+            safty.innerHTML =`${quizes.length}`
+        }
+
+        function pripare() {
+            const nums = new Array(quizes.length).fill().map((_, i)=> i);
+            const random = Math.floor(Math.random() * nums.length);
+
+            questions.innerHTML = ""
+            const asknew = document.createElement("h4");
+            asknew.innerHTML = `${quizes[random].questiont}`
+            questions.append(asknew);
+            alert("heya");
+        };
+
+        function ask(i) {
+
+        }
+        // to do with local storage
+        const safty = document.getElementById("safty")
+        const body =document.body;
+        let datas = [];
+        const input = document.getElementById("text");
+        const description = document.getElementById("description");
+        const date = document.getElementById("date");
+        const ul = document.getElementById("ul");
+
+        function localcheck() {
+        const savedata = JSON.parse(localStorage.getItem("datas"));
+        if(savedata) {
+            datas = [...savedata];
+        }
+        update();
+    } localcheck()
+      function save() {
+        if(!input.value || !date.value || !description.value) return;
+        datas.push({
+            text: input.value,
+            date: date.value,
+            description: description.value,
+            say() {
+                return this.text;
+            }
+        });
+        input.value = ""
+        description.value = ""
+        update();
+      }
+      function delet(index) {
+        datas = datas.filter((_, i)=> i !== index);
+        update();
+      }
+    function update() {
+        ul.innerHTML = "";
+        datas.forEach((data, index)=> {
+           const li = document.createElement("li");
+           li.innerHTML = `text: ${data.text} date: ${data.date}<br> descriptin: ${data.description}  <button onclick="delet(${index})">woy</button>`
+           ul.append(li)
+        });
+        localStorage.setItem("datas", JSON.stringify(datas))
+        
+    }
+    </script>
+</body>
+</html>
